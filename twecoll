@@ -176,7 +176,7 @@ def _replace_opener():
     atoken = Token(oauth, oauth_secret)
   except IndexError:
     opener = urllib2.build_opener(OAuthHandler(consumer))
-    resp = opener.open(Request('https://api.twitter.com/oauth/request_token'))
+    resp = opener.open(Request('https://api.twitter.com/oauth/request_token?oauth_callback=oob'))
     rtoken = urlparse.parse_qs(resp.read())
     rtoken = Token(rtoken['oauth_token'][0], rtoken['oauth_token_secret'][0])
     sys.stderr.write('''(2) Now, open this link and authorize the script...
